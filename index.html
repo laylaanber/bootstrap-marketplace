@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FreshMarket - Online Marketplace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: #1abc9c;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-inverse .navbar-nav>.active>a {
+            background-color: #1abc9c;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #2c3e50;
+            padding: 25px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            /* Set width to 100% */
+            margin: auto;
+            min-height: 300px;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+
+        .section-heading {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1abc9c;
+            display: inline-block;
+        }
+
+        .product-item {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+
+        .product-price {
+            color: #1abc9c;
+            font-weight: bold;
+        }
+
+        .well {
+            border-radius: 4px;
+            border-left: 1px solid #1abc9c;
+        }
+        
+        /* Popover styling */
+        .popover {
+            max-width: 250px;
+        }
+        
+        .popover-title {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .info-icon {
+            color: #1abc9c;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        
+        .shipping-icon {
+            cursor: pointer;
+            color: #1abc9c;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- Hamburger button for mobile -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Collapsing The Navigation Bar -->
+                <a class="navbar-brand" href="#">FreshMarket</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li>
+                        <a href="#" data-toggle="popover" data-placement="bottom" 
+                           title="Your Cart" 
+                           data-content="Your cart has 0 items. Add products to proceed to checkout.">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--BS Carousel-->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators dots -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&h=400&auto=format&fit=crop"
+                    alt="Electronics">
+                <div class="carousel-caption">
+                    <h3>New Veg Arrivals</h3>
+                    <p>Get up to 30% off on the rarest vegetables!</p>
+                    <button class="btn btn-success">Shop Now</button>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=1200&h=400&auto=format&fit=crop"
+                    alt="Clothing">
+                <div class="carousel-caption">
+                    <h3>Summer Collection</h3>
+                    <p>Discover our trendy summer styles</p>
+                    <button class="btn btn-success">Shop Now</button>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?q=80&w=1200&h=400&auto=format&fit=crop"
+                    alt="Home Decor">
+                <div class="carousel-caption">
+                    <h3>Home Makeover Sale</h3>
+                    <p>Transform your space with amazing deals</p>
+                    <button class="btn btn-success">Shop Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="container text-center">
+        <h3 class="section-heading">Featured Products</h3><br>
+        <div class="row">
+            <div class="col-sm-3 product-item">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&h=350&auto=format&fit=crop"
+                    class="img-responsive img-rounded" style="width:100%" alt="Product">
+                <p class="product-title">Wireless Headphones 
+                   <span class="glyphicon glyphicon-info-sign info-icon" 
+                         data-toggle="popover" 
+                         data-placement="top" 
+                         title="Product Specifications" 
+                         data-content="Bluetooth 5.0, 30-hour battery life, Active Noise Cancellation, Water resistant IPX4 rating"></span>
+                </p>
+                <p class="product-price">$129.99 
+                   <span class="shipping-icon glyphicon glyphicon-plane"
+                         data-toggle="popover"
+                         data-placement="right"
+                         title="Shipping Information"
+                         data-content="Free 2-day shipping available. Express shipping options at checkout."></span>
+                </p>
+                <button class="btn btn-success">Add to Cart</button>
+            </div>
+            <div class="col-sm-3 product-item">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=350&auto=format&fit=crop"
+                    class="img-responsive img-rounded" style="width:100%" alt="Product">
+                <p class="product-title">Smart Watch
+                   <span class="glyphicon glyphicon-info-sign info-icon" 
+                         data-toggle="popover" 
+                         data-placement="top" 
+                         title="Product Specifications" 
+                         data-content="Heart rate monitor, Sleep tracking, GPS, 5-day battery life, Water resistant up to 50m"></span>
+                </p>
+                <p class="product-price">$199.99</p>
+                <button class="btn btn-success">Add to Cart</button>
+            </div>
+            <div class="col-sm-3 product-item">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=350&auto=format&fit=crop"
+                    class="img-responsive img-rounded" style="width:100%" alt="Product">
+                <p class="product-title">Wireless Earbuds
+                   <span class="glyphicon glyphicon-info-sign info-icon" 
+                         data-toggle="popover" 
+                         data-placement="top" 
+                         title="Product Specifications" 
+                         data-content="20-hour battery with case, Touch controls, Noise isolation, Sweat resistant"></span>
+                </p>
+                <p class="product-price">$89.99</p>
+                <button class="btn btn-success">Add to Cart</button>
+            </div>
+            <div class="col-sm-3 product-item">
+                <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&h=350&auto=format&fit=crop"
+                    class="img-responsive img-rounded" style="width:100%" alt="Product">
+                <p class="product-title">Portable Speaker
+                   <span class="glyphicon glyphicon-info-sign info-icon" 
+                         data-toggle="popover" 
+                         data-placement="top" 
+                         title="Product Specifications" 
+                         data-content="12-hour battery life, Waterproof IPX7, Bluetooth 5.0, 360° sound"></span>
+                </p>
+                <p class="product-price">$79.99</p>
+                <button class="btn btn-success">Add to Cart</button>
+            </div>
+        </div>
+
+        <h3 class="section-heading">What's Hot</h3><br>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6 product-item">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Deal of the Day</strong>
+                                <span class="glyphicon glyphicon-time pull-right" 
+                                     data-toggle="popover" 
+                                     data-placement="left" 
+                                     title="Limited Time Offer" 
+                                     data-content="This deal expires in 5 hours and 23 minutes. Act fast!"></span>
+                            </div>
+                            <div class="panel-body">
+                                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&h=350&auto=format&fit=crop"
+                                    class="img-responsive" style="width:100%" alt="Product">
+                                <h4>Ultra HD Smart TV</h4>
+                                <p><strike>$999.99</strike> <span class="text-danger">$749.99</span>
+                                   <span class="glyphicon glyphicon-certificate info-icon" 
+                                         data-toggle="popover" 
+                                         data-placement="top" 
+                                         title="Special Offer" 
+                                         data-content="Save $250! Includes free wall mounting and 3-year extended warranty."></span>
+                                </p>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:70%">
+                                        70% Sold
+                                    </div>
+                                </div>
+                                <button class="btn btn-block btn-danger">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--media objects comments(reviews)-->
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h4>Customer Reviews 
+                                <span class="glyphicon glyphicon-question-sign info-icon"
+                                      data-toggle="popover"
+                                      data-placement="top"
+                                      title="About Our Reviews"
+                                      data-content="All reviews are from verified purchasers. Reviews are published after moderation."></span>
+                            </h4>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="img_avatar1.png" class="media-object" style="width:60px">
+                                </div>
+                                <div class="media-body text-left">
+                                    <h5 class="media-heading">John Doe <small><i>Posted on April 10, 2025</i></small>
+                                    </h5>
+                                    <p>Great products and fast shipping! Will shop again.</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="img_avatar1.png" class="media-object" style="width:60px">
+                                </div>
+                                <div class="media-body text-left">
+                                    <h5 class="media-heading">Jane Smith <small><i>Posted on April 5, 2025</i></small>
+                                    </h5>
+                                    <p>Amazing service and quality products!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- forms and inputs groups -->
+            <div class="col-sm-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Subscribe to Our Newsletter
+                            <span class="glyphicon glyphicon-envelope pull-right"
+                                  data-toggle="popover"
+                                  data-placement="left"
+                                  title="Newsletter Benefits"
+                                  data-content="Get exclusive deals, early access to sales, and product recommendations tailored to your interests."></span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Get updates on new products and exclusive deals!</p>
+                        <form>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <h4>Follow Us</h4>
+                    <div class="btn-group btn-group-justified">
+                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span>
+                            Facebook</a>
+                        <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> Twitter</a>
+                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-play"></span> YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <h4>About FreshMarket</h4>
+                <p>We offer the best products at the best prices.</p>
+                <p>Quality guaranteed or your money back!</p>
+            </div>
+            <div class="col-sm-4">
+                <h4>Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Shipping Information 
+                        <span class="glyphicon glyphicon-info-sign info-icon"
+                              data-toggle="popover"
+                              data-placement="top"
+                              title="Shipping Policy"
+                              data-content="Free shipping on orders over $50. Expedited options available at checkout. International shipping available to select countries."></span>
+                        </a>
+                    </li>
+                    <li><a href="#">Return Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h4>Contact Us</h4>
+                <p><span class="glyphicon glyphicon-map-marker"></span> 123 Market St, City, Country</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +1 234 567 8900</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> info@freshmarket.com</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+                <p>&copy; 2025 FreshMarket. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript to initialize all popovers -->
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                html: true,
+                trigger: 'hover'
+            });
+        });
+    </script>
+</body>
+
+</html>
